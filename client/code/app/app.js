@@ -2,17 +2,22 @@
 
 // Delete this file once you've seen how the demo works
 
-// Listen out for newMessage events coming from the server
-ss.event.on('newMessage', function(message) {
-
-  // Example of using the Hogan Template in client/templates/chat/message.jade to generate HTML for each message
+function append(message, clazz) {
   var html = ss.tmpl['chat-message'].render({
     message: message,
-    time: function() { return timestamp(); }
+    time: function() { return timestamp(); },
+    clazz: clazz
   });
-
-  // Append it to the #chatlog div and show effect
   return $(html).hide().appendTo('#chatlog').slideDown();
+}
+
+// Listen out for newMessage events coming from the server
+ss.event.on('chat:browser', function (message) {
+  append(message, 'browser');
+});
+ss.event.on('chat:message', function (obj) {
+  // this assumes obj structure { message: "content" }
+  append(obj.message, 'webservice');
 });
 
 $('ul.nav li').on('click', function (e) {
