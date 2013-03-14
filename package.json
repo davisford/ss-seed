@@ -1,0 +1,17 @@
+{
+  "name": "ss-seed",
+  "description": "An awesome real time application",
+  "version": "0.0.1",
+  "author": "Me <davisford@gmail.com>",
+  "private": true,
+  "engines": { "node": ">= 0.8.0" },
+  "dependencies": {
+    "socketstream": "0.3.x",
+    "ss-jade": "0.1.x",
+    "ss-stylus": "0.1.x",
+    "ss-hogan": "0.1.x"
+  },
+  "scripts":{
+    "start":"node app.js"
+  }
+}
