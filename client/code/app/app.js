@@ -15,6 +15,17 @@ ss.event.on('newMessage', function(message) {
   return $(html).hide().appendTo('#chatlog').slideDown();
 });
 
+$('ul.nav li').on('click', function (e) {
+  var $link = $(e.currentTarget);
+  // hide all divs under #content
+  $('#content > div').hide();
+  // remove all active classes
+  $('ul.nav li').removeClass('active');
+  // add active class, and show div link href => #id
+  $link.addClass('active');
+  $($('a', $link).attr('href')).show();
+});
+
 // Show the chat form and bind to the submit action
 $('#demo').on('submit', function() {
 
